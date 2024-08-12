@@ -1,0 +1,103 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Experiences</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Experiences Details</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a type="button" href="/ExperiencesFormView/{{EQ.id}}" class="btn btn-outline-success mb-2 me-2" >Add Questions</a>
+                </div>
+            </div>
+            <div class="col-12">
+                {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <center>
+                    <h3 class="text-success">{{message}}</h3>
+                </center>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content p-4 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" id=''>
+                    <div class="table-responsive p-2">
+                        <table id="exampletab" class="table mt-0 table-striped table-card table-nowrap display nowrap" style="width:100%">
+                            <thead class="text-uppercase small text-muted">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Full Name</th>
+                                    <th>Date of Birth</th>
+                                    <th>Email Address</th>
+                                    <th>Country code</th>
+                                    <th>Phone Number</th>
+                                    <th>Whatsapp Number</th>
+                                    <th>Country</th>
+                                    <th>Pincode</th>
+                                    <th>Statement of Purpose</th>
+                                    {% if EQ.Q1 != '' %}<th>{{EQ.Q1}}</th>{% endif %}
+                                    {% if EQ.Q2 != '' %}<th>{{EQ.Q2}}</th>{% endif %}
+                                    {% if EQ.Q3 != '' %}<th>{{EQ.Q3}}</th>{% endif %}
+                                    {% if EQ.Q4 != '' %}<th>{{EQ.Q4}}</th>{% endif %}
+                                    {% if EQ.Q5 != '' %}<th>{{EQ.Q5}}</th>{% endif %}
+                                    {% if EQ.Q6 != '' %}<th>{{EQ.Q6}}</th>{% endif %}
+                                    {% if EQ.Q7 != '' %}<th>{{EQ.Q7}}</th>{% endif %}
+                                    {% if EQ.Q8 != '' %}<th>{{EQ.Q8}}</th>{% endif %}
+                                    {% if EQ.Q9 != '' %}<th>{{EQ.Q9}}</th>{% endif %}
+                                    {% if EQ.Q10 != '' %}<th>{{EQ.Q10}}</th>{% endif %}
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in EA %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{i.FullName}}</td>
+                                    <td>{{i.DOB}}</td>
+                                    <td>{{i.Email}}</td>
+                                    <td>{{i.Countrycode}}</td>
+                                    <td>{{i.ContactNo}}</td>
+                                    <td>{{i.WPNo}}</td>
+                                    <td>{{i.Country}}</td>
+                                    <td>{{i.Pincode}}</td>
+                                    <td>{{i.SOP}}</td>
+                                    {% if EQ.Q1 != '' %}<td>{{i.A1}}</td>{% endif %}
+                                    {% if EQ.Q2 != '' %}<td>{{i.A2}}</td>{% endif %}
+                                    {% if EQ.Q3 != '' %}<td>{{i.A3}}</td>{% endif %}
+                                    {% if EQ.Q4 != '' %}<td>{{i.A4}}</td>{% endif %}
+                                    {% if EQ.Q5 != '' %}<td>{{i.A5}}</td>{% endif %}
+                                    {% if EQ.Q6 != '' %}<td>{{i.A6}}</td>{% endif %}
+                                    {% if EQ.Q7 != '' %}<td>{{i.A7}}</td>{% endif %}
+                                    {% if EQ.Q8 != '' %}<td>{{i.A8}}</td>{% endif %}
+                                    {% if EQ.Q9 != '' %}<td>{{i.A9}}</td>{% endif %}
+                                    {% if EQ.Q10 != '' %}<td>{{i.A10}}</td>{% endif %}
+                                    <td></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+</div>
+{% endblock content %}
+
+

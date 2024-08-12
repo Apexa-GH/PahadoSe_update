@@ -1,0 +1,103 @@
+{% extends 'admin/main.html' %}
+{% load static %}
+{% block content %}
+<!--//Page Toolbar//-->
+<div class="toolbar p-4 bg-body">
+    <div class="position-relative container-fluid px-0">
+        <div class="row align-items-center position-relative">
+            <div class="col-md-5 col-9 mb-4 mb-lg-0">
+                <h3 class="mb-2">Add Reviews</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item">Reviews</li>
+                        <li class="breadcrumb-item active">Add Reviews</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-7 col-3 text-md-end">
+                <div class="d-flex justify-content-md-end align-items-center">
+                    <a href="/Reviews" class="btn btn-outline-success mb-2 me-2">Back</a>
+                </div>
+            </div>
+            <div class="col-12">
+                {% for message in messages %}
+                {% if message.tags == 'success' %}
+                <center>
+                    <h3 class="text-success">{{message}}</h3>
+                </center>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content p-4 pt-0 d-flex flex-column-fluid">
+    <div class="container-fluid px-0">
+        <div class="row justify-content-start">
+            <div class="col-md-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="mb-1">Add Reviews</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="col-md-4 mb-4">
+                                <label for="" class="form-label"><b>Category</b></label>
+                                <select multiple class="choices__inner" data-choices='{"silent": true,"removeItems": "true","removeItemButton": "true"}'>
+                                    <option value="Html">HTML</option>
+                                    <option value="Css">Css</option>
+                                    <option value="Bootstrap">Bootstrap</option>
+                                    <option value="Figma">Figma</option>
+                                    <option value="js">Js</option>
+                                    <option value="Figma">Figma</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="" class="form-label"><b>Name</b></label>
+                                <input type="text" class="form-control" name="Name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="" class="form-label"><b>Image</b></label>
+                                <input type="file" class="form-control" name="Image" id="" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="" class="form-label"><b>Small Description</b></label>
+                                <textarea class="form-control bg-black" style="color: #000 !important;" name="SmallDescription" id="SmallDescription"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="" class="form-label"><b>Description</b></label>
+                                <textarea class="form-control bg-black" style="color: #000 !important;" name="Description" id="Description"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row justify-content-center">
+                                    <button type="submit" class="col-5 btn btn-success m-1">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//Page content End//-->
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#SmallDescription' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    ClassicEditor
+        .create( document.querySelector( '#Description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+{% endblock script %}

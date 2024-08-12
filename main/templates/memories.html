@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Banner -->
+<section class="page-banner style-two heading-bg-image" style="background-image: url(static/assets/images/New/memories.jpg);">
+	<div class="auto-container">
+		<ul class="page-breadbrumbs">
+			<li><a href="#">Home</a></li>
+			<li>Memories</li>
+		</ul>
+		<h1 class="page-banner_title">Memories</h1>
+	</div>
+</section>
+<!-- End Page Banner -->
+
+<!-- Gallery Six  -->
+<section class="gallery-six gallery-two p-2">
+	<div class="outer-container">
+		<div class="gallery-carousel-two owl-carousel owl-theme p-2">
+			{% for i in dt %}
+			<!-- Image -->
+			<div class="image">
+				<a class="lightbox-image" href="/{{i.Image}}"><img
+						src="/{{i.Image}}" alt=""></a>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<!-- End Gallery Six  -->
+{% endblock content %}

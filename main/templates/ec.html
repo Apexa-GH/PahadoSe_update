@@ -1,0 +1,75 @@
+﻿{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Page Banner -->
+<section class="page-banner style-two" style="background-image: url(/{{EC.Image}});  height: 80hv; background-position: center center;">
+	<div class="auto-container">
+		<ul class="page-breadbrumbs">
+			<li><a href="#">Home</a></li>
+			<li>Experiences</li>
+		</ul>
+		<h1 class="page-banner_title" style="font-size: 70px !important;">{{name}}</h1>
+	</div>
+</section>
+<!-- End Page Banner -->
+
+<!-- Gallery One -->
+<section class="gallery-one">
+	<div class="auto-container">
+		<div class="itinerary-one">
+			<div class="title-box">
+				<div class="d-flex align-items-center justify-content-between flex-wrap">
+					<h4>{{name}}</h4>
+				</div>
+			</div>
+
+			<div class="row">
+				{% for i in dt %}
+				<!-- Itinerary Block One -->
+				<div class="col-12">
+					<div class="row">
+						<div class="col-md-4 mb-3" style="border-radius: 10px; height: 280px; background:  url('/{{i.Image}}'); background-repeat: no-repeat; background-size: cover; position: relative;">
+							<div class="text-center" style="width: 310px; position: absolute;top: 50%;left: 50%; transform: translate(-50%,-50%);">
+								<h2>
+									<a {% if i.View == 'KnowMore' %}href="{{name}}/{{ i.Name }}"{% endif %} class="" style=" font-size: 35px; font-weight: 600; color: white !important;">{{i.Name}}</a>
+								</h2>
+							</div>
+							
+						</div>
+						<div class="col-md-8 d-flex justify-content-center">
+							<div class="align-content-center" style="width: 650px;">
+								<p class="">{{i.SmallDescription|safe }}</p>
+								<center>
+									<a {% if i.View == 'KnowMore' %}href="{{name}}/{{ i.Name }}"{% endif %} class="btn-style-two theme-btn m-auto">
+									<span class="btn-wrap">
+										<span class="text-one">{% if i.View == 'KnowMore' %}Know More{% else %}Coming Soon{% endif %}</span>
+										<span class="text-two">{% if i.View == 'KnowMore' %}Know More{% else %}Coming Soon{% endif %}</span>
+									</span>
+								</a> 
+								</center>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Gallery One -->
+
+{% endblock content %}
+<!-- <div class="itinerary-block_one-inner">
+	<div class="itinerary-block_one-image">
+		<img src="/{{i.Image}}" alt="" class="img-fluid" style="height: 280px;">
+		<div class="itinerary-block_one-content2 text-center">
+			<h2 class="itinerary-block_one-heading text-center">
+				<center>
+					
+				</center></h2>
+		</div>
+	</div>
+</div> -->
